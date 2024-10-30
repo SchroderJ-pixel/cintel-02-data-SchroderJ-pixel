@@ -128,3 +128,13 @@ with ui.card(full_screen=True):
             }
         )
         return fig
+
+with ui.layout_columns():
+    with ui.card():
+        @render.plot(alt="Seaborn Histogram")
+        def plot():
+            ax=sns.histplot(data=penguins_df,x="flipper_length_mm",bins=input.seaborn_bin_count())
+            ax.set_title("Seaborn: Palmer Penguins")
+            ax.set_xlabel("flipper_length_mm")
+            ax.set_ylabel("Count")
+            return ax
